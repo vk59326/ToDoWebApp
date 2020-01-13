@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+</head>
+<body>
+<ul>
+    {% for i in data %}
+    <li>{{i.text}}</li>
+    <form action="/todo/delete/{{i.id}}/" method="post" style="display:inline;">{% csrf_token %}
+    <input type="submit" value="delete" >
+</form>
+    {% endfor %}
+</ul>
+<form action="/todo/add/" method="post">{% csrf_token %}
+    <input type="text" name="text" id="text">
+    <input type="submit" value="add">
+</form>
+</body>
+</html>
